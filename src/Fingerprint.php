@@ -21,7 +21,11 @@ class Fingerprint
         if(option('bvdputte.fingerprint.disabled')) {
             $basename = $pathinfo['filename'] . '.' . $pathinfo['extension'];
         } else {
-            $basename = $pathinfo['filename'] . '.' . md5_file($path) . '.' . $pathinfo['extension'];
+            if (option('bvdputte.fingerprint.query')) {
+                $basename = $pathinfo['filename'] . '.' . $pathinfo['extension'] . '?v=' . md5_file($path);
+            } else {
+                $basename = $pathinfo['filename'] . '.' . md5_file($path) . '.' . $pathinfo['extension'];
+            }
         }
     
         if ($pathinfo['dirname'] === '.') {
