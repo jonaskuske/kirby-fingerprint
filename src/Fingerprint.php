@@ -8,12 +8,14 @@ class Fingerprint
 {
     public static function addHash($path)
     {
+        $original_path = $path;
+
         if (Url::isAbsolute($path)) {
             $path = Url::path($path);
         }
 
         if ( ! file_exists($path) || count($pathinfo = pathinfo($path)) < 4) {
-            return $path;
+            return $original_path;
         }
 
         if(option('bvdputte.fingerprint.disabled')) {
