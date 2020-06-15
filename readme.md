@@ -11,6 +11,12 @@ When the files are updated, new hashes are added to the filenames automatically;
 - `git submodule add https://github.com/bvdputte/kirby-fingerprint.git site/plugins/kirby-fingerprint`
 - `composer require bvdputte/kirby-fingerprint`
 
+<br>
+
+> If you can't change your server setup, use the [query option](#options) which generates URLs in the form of **`?v=<md5_hash>`**.  
+> But be aware that [query strings are not perfect](http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/).
+
+
 ### Apache .htaccess rules
 
 💡 Add the following to your `.htaccess` file:
@@ -44,6 +50,15 @@ js("assets/js/scripts.js");
 ```
 
 ## Options
+
+Use query string:
+
+```php
+// config.php
+return [
+    'bvdputte.fingerprint.query' => true
+];
+```
 
 Disable plugin:
 
